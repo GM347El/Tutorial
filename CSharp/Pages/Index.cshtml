@@ -1,0 +1,141 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div>
+    <h1 class="display-4">Inheritance</h1>
+    <p>Inheritance, together with encapsulation and polymorphism, is one of the three primary characteristics of object-oriented programming. Inheritance enables you to create new classes that reuse, extend, and modify the behavior defined in other classes. The class whose members are inherited is called the base class, and the class that inherits those members is called the derived class. A derived class can have only one direct base class. However, inheritance is transitive. If ClassC is derived from ClassB, and ClassB is derived from ClassA, ClassC inherits the members declared in ClassB and ClassA.</p>
+    <p>Structs do not support inheritance, but they can implement interfaces. </p>
+</div>
+
+<syntax>
+
+public struct PersonStruct
+{
+    public PersonStruct(string name, int age)
+    {
+        Name = name;
+        Age = age;
+    }
+    public string Name { get; set; }
+    public int Age;
+}
+
+public record PersonRecord
+{
+    public PersonRecord(string name, int age)
+    {
+        Name = name;
+        Age = age;
+    }
+    public string Name { get; set; }
+    public int Age { get; set; }
+}
+
+public class PersonClass
+{
+    public PersonClass(string name, int age)
+    {
+        Name = name;
+        Age = age;
+    }
+    public string Name { get; set; }
+    public int Age { get; set; }
+}
+
+public record struct PersonRecordStruct
+{
+    public PersonRecordStruct(string name, int age)
+    {
+        Name = name;
+        Age = age;
+    }   
+    public string Name { get; set; }
+    public int Age { get; set; }
+}
+
+public record class PersonRecordClass
+{
+    public PersonRecordClass(string name, int age)
+    {
+        Name = name;
+        Age = age;
+    } 
+    public string Name { get; set; }
+    public int Age { get; set; }
+}
+
+    
+
+</syntax>
+<syntax>
+    PersonStruct personStruct1 = new("Reza", 20);
+    PersonStruct personStruct2 = personStruct1;
+    personStruct2.Name = "Arsalan";
+    System.Console.WriteLine("Struct1: {0}", personStruct1.ToString());
+    System.Console.WriteLine("Struct2: {0}", personStruct2.ToString());
+    System.Console.WriteLine("Struct equality: {0}", personStruct1.Equals(personStruct2));
+
+    System.Console.WriteLine();
+    PersonRecordStruct personRecordStruct1 = new("Reza", 20);
+    PersonRecordStruct personRecordStruct2 = personRecordStruct1;
+    personRecordStruct2.Name = "Arsalan";
+    System.Console.WriteLine("Record Struct1: {0}", personRecordStruct1.ToString());
+    System.Console.WriteLine("Record Struct2: {0}", personRecordStruct2.ToString());
+    System.Console.WriteLine("Record Struct equality: {0}", personRecordStruct1.Equals(personRecordStruct2));
+
+    System.Console.WriteLine();
+    PersonRecord personRecord1 = new("Reza", 20);
+    PersonRecord personRecord2 = personRecord1;
+    personRecord2.Name = "Arsalan";
+    personRecord1.Age = 26;
+    System.Console.WriteLine("Record1: {0}", personRecord1.ToString());
+    System.Console.WriteLine("Record2: {0}", personRecord2.ToString());
+    System.Console.WriteLine("Record equality: {0}", personRecord1.Equals(personRecord2));
+
+    System.Console.WriteLine();
+    PersonClass personClass1 = new("Reza", 20);
+    PersonClass personClass2 = personClass1;
+    personClass2.Name = "Arsalan";
+    System.Console.WriteLine("Class1: {0}", personClass1.ToString());
+    System.Console.WriteLine("Class2: {0}", personClass2.ToString());
+    System.Console.WriteLine("Class equality: {0}", personClass1.Equals(personClass2));
+
+
+    System.Console.WriteLine();
+    PersonRecordClass personRecordClass1 = new("Reza", 20);
+    PersonRecordClass personRecordClass2 = personRecordClass1;
+    personRecordClass2.Name = "Arsalan";
+    System.Console.WriteLine("Record Class1: {0}", personRecordClass1.ToString());
+    System.Console.WriteLine("Record Class2: {0}", personRecordClass2.ToString());
+    System.Console.WriteLine("Record Class equality: {0}", personRecordClass1.Equals(personRecordClass2));
+
+    /* output
+    Struct1: test.PersonStruct
+    Struct2: test.PersonStruct
+    Struct equality: False
+
+    Record1: PersonRecord { Name = Arsalan, Age = 26 }
+    Record2: PersonRecord { Name = Arsalan, Age = 26 }
+    Record equality: True
+
+    Class1: test.PersonClass
+    Class2: test.PersonClass
+    Class equality: True
+
+    Record Struct1: PersonRecordStruct { Name = Reza, Age = 20 }
+    Record Struct2: PersonRecordStruct { Name = Arsalan, Age = 20 }
+    Record Struct equality: False
+
+    Record Class1: PersonRecordClass { Name = Arsalan, Age = 20 }
+    Record Class2: PersonRecordClass { Name = Arsalan, Age = 20 }
+    Record Class equality: True
+    */
+
+</syntax>
+
+
+
+    
